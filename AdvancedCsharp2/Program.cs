@@ -154,19 +154,41 @@ namespace AdvancedCsharp2
 
             #endregion
             #region LinkedList
-            LinkedList<int> Linkedlist = new LinkedList<int>();
-            Console.WriteLine(Linkedlist.Count);
-            Linkedlist.AddLast(1);
-            Linkedlist.AddLast(2);
-            Console.WriteLine(Linkedlist.Count);
-            LinkedListNode<int> AfterNode = Linkedlist.Find(1);
-            Linkedlist.AddAfter(AfterNode,5);
-            Linkedlist.AddBefore(Linkedlist.Find(2), 10);
-            Console.WriteLine(Linkedlist.Count);
-            foreach (int i in Linkedlist)
-                Console.WriteLine(i);
+            //LinkedList<int> Linkedlist = new LinkedList<int>();
+            //Console.WriteLine(Linkedlist.Count);
+            //Linkedlist.AddLast(1);
+            //Linkedlist.AddLast(2);
+            //Console.WriteLine(Linkedlist.Count);
+            //LinkedListNode<int> AfterNode = Linkedlist.Find(1);
+            //Linkedlist.AddAfter(AfterNode,5);
+            //Linkedlist.AddBefore(Linkedlist.Find(2), 10);
+            //Console.WriteLine(Linkedlist.Count);
+            //foreach (int i in Linkedlist)
+            //    Console.WriteLine(i);
 
 
+            #endregion
+            #region generic collections stack
+            //Stack<int> stack = new Stack<int>();    
+            //stack.Push(1);
+            //stack.Push(2);
+            //stack.Push(3);
+            //foreach (int i in stack)
+            //    Console.WriteLine(i);
+
+            //Console.WriteLine(stack.Peek());
+            //foreach (int i in stack)
+            //    Console.WriteLine(i);
+
+            //Console.WriteLine(stack.Pop());
+            //Console.WriteLine(stack.Pop());
+            //Console.WriteLine(stack.Pop());
+            //bool result = stack.TryPop(out int Element);
+            //Console.WriteLine("==============");
+            //foreach (int i in stack)
+            //    Console.WriteLine(i);
+            //Console.WriteLine(result);
+            //Console.WriteLine(Element);
             #endregion
         }
     }
