@@ -122,16 +122,52 @@ namespace AdvancedCsharp2
             //Console.WriteLine(Numbers.Contains(100));
 
 
-            List<int> Numbers = new List<int>(4) { 1, 2, 3, 4 };
-            int[] array = new int[10];
+            //List<int> Numbers = new List<int>(4) { 1, 2, 3, 4 };
+            //int[] array = new int[10];
             //Numbers.CopyTo(array);
             //Numbers.CopyTo(array,3);
+            //Numbers.CopyTo(1,array, 5,3);
+            //foreach (int i in array) 
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //Console.WriteLine($"Count of List = {Numbers.Count}, Capcity of List = {Numbers.Capacity}");
+            //Numbers.EnsureCapacity(4);
+            //Console.WriteLine(Numbers.EnsureCapacity(4));
+            //Numbers.EnsureCapacity(20);
+            //Console.WriteLine(Numbers.EnsureCapacity(20));
+            //Console.WriteLine($"Count of List = {Numbers.Count}, Capcity of List = {Numbers.Capacity}");
+            //int index = Numbers.IndexOf(3);
+            //Console.WriteLine(index);
 
+            //foreach (int i in Numbers) 
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //Numbers.Reverse();
+            //Console.WriteLine("======================");
+            //foreach (int i in Numbers) 
+            //{
+            //    Console.WriteLine(i);
+            //}
 
 
             #endregion
+            #region LinkedList
+            LinkedList<int> Linkedlist = new LinkedList<int>();
+            Console.WriteLine(Linkedlist.Count);
+            Linkedlist.AddLast(1);
+            Linkedlist.AddLast(2);
+            Console.WriteLine(Linkedlist.Count);
+            LinkedListNode<int> AfterNode = Linkedlist.Find(1);
+            Linkedlist.AddAfter(AfterNode,5);
+            Linkedlist.AddBefore(Linkedlist.Find(2), 10);
+            Console.WriteLine(Linkedlist.Count);
+            foreach (int i in Linkedlist)
+                Console.WriteLine(i);
 
 
+            #endregion
         }
     }
 }
