@@ -168,7 +168,7 @@ namespace AdvancedCsharp2
 
 
             #endregion
-            #region generic collections stack
+            #region generic collections Lists [stack] first in last out
             //Stack<int> stack = new Stack<int>();    
             //stack.Push(1);
             //stack.Push(2);
@@ -189,6 +189,31 @@ namespace AdvancedCsharp2
             //    Console.WriteLine(i);
             //Console.WriteLine(result);
             //Console.WriteLine(Element);
+            #endregion
+            #region generic collections Lists [Queue] first in first out 
+            Queue<int> queue = new Queue<int>();   
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(4);
+
+
+            Console.WriteLine(queue.Dequeue()); 
+            Console.WriteLine(queue.Dequeue()); 
+            Console.WriteLine(queue.Dequeue());
+            Console.WriteLine(queue.Dequeue());
+            //Console.WriteLine("=================");
+            //foreach (int i in queue)
+            //    Console.WriteLine(i);
+            queue.Peek();
+           bool result = queue.TryPeek(out int Element );
+            //bool result = queue.TryDequeue(out int Element);
+            //Console.WriteLine(result);
+            //Console.WriteLine(Element);
+            Console.WriteLine("===================");
+            foreach (int i in queue)
+                Console.WriteLine(i);
+
             #endregion
         }
     }
