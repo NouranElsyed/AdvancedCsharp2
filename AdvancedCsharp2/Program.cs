@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Runtime.InteropServices;
 
 namespace AdvancedCsharp2
 {
@@ -17,18 +18,18 @@ namespace AdvancedCsharp2
 
         //}
 
-        public static int SumList(List<int> list)
-    {
-        int Sum = 0;
-        if (list is not null)
+    //    public static int SumList(List<int> list)
+    //{
+    //    int Sum = 0;
+    //    if (list is not null)
 
-            for (int i = 0; i < list.Count; i++)
+    //        for (int i = 0; i < list.Count; i++)
 
-                Sum += list[i];
+    //            Sum += list[i];
 
-        return Sum;
+    //    return Sum;
 
-    }
+    //}
     static void Main(string[] args)
         {
             #region Part 01 NonGeneric Collections - ArrayList
@@ -92,6 +93,42 @@ namespace AdvancedCsharp2
 
             //int Result = SumList(Numbers);
             //Console.WriteLine($"Result {Result}");
+            #endregion
+            #region List Method
+            //List<int> Numbers = new List<int>(4){ 1,2,3,4};
+            //Console.WriteLine($"Count of List = {Numbers.Count}, Capcity of List = {Numbers.Capacity}");
+            //Numbers.Add(5);
+            //Numbers.AddRange(new int[] { 6, 7 });
+            //Console.WriteLine($"Count of List = {Numbers.Count}, Capcity of List = {Numbers.Capacity}");
+            //foreach (int item in Numbers) 
+            //    Console.Write($"{item}");
+            //Console.WriteLine("\n=================================");
+            //Numbers.Insert(6,8);
+            //foreach (int item in Numbers)
+            //    Console.Write($"{item}");
+            //Console.WriteLine("\n=================================");
+            //Numbers.InsertRange(4, new int[] { 9, 10 });
+            //foreach (int item in Numbers)
+            //    Console.Write($"{item}");
+            //Console.WriteLine("\n=================================");
+            //int index = Numbers.BinarySearch(3);
+            //Console.WriteLine($"index of 3 = {index}");
+            //int index = Numbers.BinarySearch(9);
+            //Console.WriteLine($"index of 9 = {index}");
+            //Numbers.Clear();
+            //Console.WriteLine($"Count of List = {Numbers.Count}, Capcity of List = {Numbers.Capacity}");
+
+            //Console.WriteLine(Numbers.Contains(9)) ;
+            //Console.WriteLine(Numbers.Contains(100));
+
+
+            List<int> Numbers = new List<int>(4) { 1, 2, 3, 4 };
+            int[] array = new int[10];
+            //Numbers.CopyTo(array);
+            //Numbers.CopyTo(array,3);
+
+
+
             #endregion
 
 
