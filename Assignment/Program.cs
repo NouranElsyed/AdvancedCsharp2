@@ -44,12 +44,27 @@ namespace Assignment
             #endregion
 
             #region Q2
-
+            List<int> list = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8 };
+            List<int> evenNumbers = new List<int>();
+            for (int i = 0; i < list.Count; i++) 
+            {
+                if (list[i]%2==0)
+                {
+                    evenNumbers.Add(list[i]);
+                }
+            }
 
             #endregion
 
             #region Q3
+            FixedSizeList<int> numbers = new FixedSizeList<int>(3);
+            numbers.Add(1);
+            numbers.Add(1);
+            numbers.Add(2); 
+            numbers.Add(3);
 
+            Console.WriteLine(numbers[1]);
+            
 
             #endregion
 
