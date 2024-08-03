@@ -6,188 +6,109 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+
 
 namespace Assignment
 {
-    internal class FixedSizeList<T> :IList
+    internal class FixedSizeList<T> : IList
     {
-        public int size;
-
-      
-
-        public T[] values;
-
-        //internal int _version;
-        public T this[int index]
+        internal int size;
+        internal T[] items;
+        //List<T> list = new List<T> ();
+        public int Count => size;
+        public int IndexOf(object? value)
         {
-            get
+            if (IsCompatibleObject(value))
             {
-                // Following trick can reduce the range check by one
-                if ((uint)index >= (uint)size)
-                {
-                    //ThrowHelper.ThrowArgumentOutOfRange_IndexMustBeLessException();
-                }
-                return values[index];
+                return IndexOf((T)value!);
             }
+            return -1;
+            //return items.IndexOf((T)value);
+        }
+        private static bool IsCompatibleObject(object? value)
+        {
+            // Non-null values are fine.  Only accept nulls if T is a class or Nullable<U>.
+            // Note that default(T) is not equal to null for value types except when T is Nullable<U>.
+            return (value is T) || (value == null && default(T) == null);
+        }
+        public object? this[int index] { get { return items[index]; } set { items[index] = (T)value; } }
 
-            set
+        public bool IsFixedSize => true;
+
+        public bool IsReadOnly => false;
+
+        public bool IsSynchronized => false;
+
+        public object SyncRoot => this;
+
+        public int Add(object? value)
+        {
+            Add((T)value!);
+            return Count - 1;
+        }
+        public void Add(T item)
+        {
+            //items.Add(item);
+
+            T[] array = items;
+            int Size = size;
+            if ((uint)size < (uint)array.Length)
             {
-                if ((uint)index >= (uint)size)
-                {
-                    //ThrowHelper.ThrowArgumentOutOfRange_IndexMustBeLessException();
-                }
-                values[index] = value;
-                //_version++;
+                Size = size + 1;
+                array[Size] = item;
+            }
+            else
+            {
+                throw new Exception();
             }
         }
-
-
-        //
-        public int Capacity
-        {
-            get => values.Length;
-            set
-            {
-                if (value < size)
-                {
-                    //ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument.value, ExceptionResource.ArgumentOutOfRange_SmallCapacity);
-                }
-
-                if (value != values.Length)
-                {
-                    if (value > 0)
-                    {
-                        T[] newItems = new T[value];
-                        if (size > 0)
-                        {
-                            Array.Copy(values, newItems, size);
-                        }
-                        values = newItems;
-                    }
-                    else
-                    {
-                        values = new T[0];
-                    }
-                }
-            }
-        }
-
-        object? IList.this[int index]
-        {
-            get => this[index];
-            set
-            {
-                //ThrowHelper.IfNullAndNullsAreIllegalThenThrow<T>(value, ExceptionArgument.value);
-
-                try
-                {
-                    this[index] = (T)value!;
-                }
-                catch (InvalidCastException)
-                {
-                    //ThrowHelper.ThrowWrongValueTypeArgumentException(value, typeof(T));
-                }
-            }
-        }
-
-
-
         public FixedSizeList(int capacity)
         {
-            this.Capacity = capacity;
-
+            size=capacity;
             if (capacity < 0)
                 throw new Exception();
 
-            if (capacity == 0)
-                Console.WriteLine("List is empty");
-            else
-                values = new T[capacity];
-        }
-        public FixedSizeList()
-        {
-
-        }
-
-        public void Add(T item)
-        {
-            //_version++;
-            T[] array = values;
-            int size = Capacity;
-            if ((uint)size < (uint)array.Length)
-            {
-                Console.WriteLine("not of range");
-            }
-     
-        }
-
-        int IList.Add(object? item)
-        { 
-
-       
+            else;
            
-                Add((T)item!);
-         
-
-            return Count - 1;
+                items = new T[capacity];
         }
 
-
-
-
-        #region not used 
-        public bool IsFixedSize => throw new NotImplementedException();
-
-        public bool IsReadOnly => throw new NotImplementedException();
-
-        public int Count => Capacity;
-
-        public bool IsSynchronized => throw new NotImplementedException();
-
-        public object SyncRoot => throw new NotImplementedException();
-
+        public int Capacity
+        {
+            get => items.Length;
+        }
 
         public void Clear()
         {
             throw new NotImplementedException();
         }
-
         public bool Contains(object? value)
         {
             throw new NotImplementedException();
         }
-
-        public int IndexOf(object? value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Insert(int index, object? value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(object? value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveAt(int index)
-        {
-            throw new NotImplementedException();
-        }
-
         public void CopyTo(Array array, int index)
         {
             throw new NotImplementedException();
         }
-
         public IEnumerator GetEnumerator()
         {
             throw new NotImplementedException();
         }
-        #endregion
-
+        public void Insert(int index, object? value)
+        {
+            throw new NotImplementedException();
+        }
+        public void Remove(object? value)
+        {
+            throw new NotImplementedException();
+        }
+        public void RemoveAt(int index)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
