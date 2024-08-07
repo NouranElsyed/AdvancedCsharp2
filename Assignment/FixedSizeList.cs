@@ -13,12 +13,20 @@ using System.Runtime.CompilerServices;
 
 namespace Assignment
 {
-    internal class FixedSizeList<T> : IList
+    internal class FixedSizeList<T>
     {
-        internal int size;
+        internal int Count;
         internal T[] items;
-        //List<T> list = new List<T> ();
-        public int Count => size;
+        public FixedSizeList(int capacity)
+        {
+            if (capacity <= 0)
+            {
+                throw new ArgumentException("Capacity must be greater than zero.");
+            }
+            items = new T[capacity];
+            Count = 0;
+        }
+
         public int IndexOf(object? value)
         {
             if (IsCompatibleObject(value))
@@ -43,37 +51,14 @@ namespace Assignment
         public bool IsSynchronized => false;
 
         public object SyncRoot => this;
-
-        public int Add(object? value)
-        {
-            Add((T)value!);
-            return Count - 1;
-        }
         public void Add(T item)
         {
-            //items.Add(item);
-
-            T[] array = items;
-            int Size = size;
-            if ((uint)size < (uint)array.Length)
+            if (Count >= items.Length)
             {
-                Size = size + 1;
-                array[Size] = item;
+                throw new InvalidOperationException("The list is full. Cannot add more elements.");
             }
-            else
-            {
-                throw new Exception();
-            }
-        }
-        public FixedSizeList(int capacity)
-        {
-            size=capacity;
-            if (capacity < 0)
-                throw new Exception();
-
-            else;
-           
-                items = new T[capacity];
+            items[Count] = item;
+            Count++;
         }
 
         public int Capacity
@@ -93,9 +78,12 @@ namespace Assignment
         {
             throw new NotImplementedException();
         }
-        public IEnumerator GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < Count; i++)
+            {
+                yield return items[i];
+            }
         }
         public void Insert(int index, object? value)
         {

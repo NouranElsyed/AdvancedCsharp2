@@ -121,21 +121,28 @@ namespace Assignment
             #endregion
 
             #region Q3
-            FixedSizeList<int> numbers = new FixedSizeList<int> (5);
-    
-           
+            FixedSizeList<int> numbers = new FixedSizeList<int>(5);
+
+
             //Console.WriteLine(numbers.Count);
 
-            numbers.Add(1);
             numbers.Add(1);
             numbers.Add(2);
             numbers.Add(3);
 
-            Console.WriteLine(numbers[1]);
-            Console.WriteLine(numbers[2]);
-            Console.WriteLine(numbers[3]);
-            //foreach (int i in numbers.values) 
-            //Console.WriteLine(i);
+            //Console.WriteLine(numbers[1]);
+            //Console.WriteLine(numbers[2]);
+            Console.WriteLine(numbers.Count);
+            foreach (int i in numbers)
+                Console.Write($"{i} ");
+
+            Console.WriteLine();
+            numbers.Add(4);
+            numbers.Add(5);
+
+            foreach (int i in numbers)
+                Console.Write($"{i} ");
+            Console.WriteLine("\n"+numbers.Count);
 
 
             #endregion
